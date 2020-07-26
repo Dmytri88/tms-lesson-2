@@ -52,8 +52,7 @@
             return res;
         }
 
-        let a, b, symbol, res, op, answer;
-        let score = 0;
+        let i, a, b, symbol, res, op, answer, answerTrue = 0, answerFalse = 0, report = [];
 
         for (let i = 0; i < 10; i++) {
             a = randomInt(1,10);
@@ -62,16 +61,29 @@
             op = mathSymb(symbol);
             res = mathOP(a, b, op);
 
-            answer = +prompt(a + ' ' + op + ' ' + b + ' = ?')
-            
+            answer = +prompt(a + ' ' + op + ' ' + b + ' = ?');
+
+
+
             if (+res.toFixed(2) == +answer.toFixed(2)) {
-                score++;                
+                answerTrue++;                
+            }
+            else{
+                answerFalse++;
+                report.push(a + ' ' + op + ' ' + b + ' = ' + res.toFixed(2) + ', a Ваш ответ ' + answer.toFixed(2));
             };
- 
+
             if (i == 9) {
-                alert('Ваша оценка ' + score + ' балов')
-            } 
+                alert('Ваша оценка ' + answerTrue + ' балов' + '\nОшибки:' + '\n' + report);
+            };
+            
+
         }
+
+        /* for (let k = 0; k < report.length; k++) {
+            alert(report[k]);
+        } */
+        
     </script>
 
 </body>
