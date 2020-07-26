@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    
+
+    <script>
+        alert('ВНИМАНИЕ! При делении округляйте до второго знака после запятой!')
+  
+        function randomInt(min, max) {
+            let rand = min + Math.random() * (max + 1 - min);
+            return Math.floor(rand);    
+        };
+
+        function mathOP(a, b, op) {
+            let res;
+
+            if (op == '+') {
+                res = a + b;
+            }
+            else if (op == '-') {
+                res = a - b;
+            }
+            else if (op == '*') {
+                res = a * b;
+            }
+            else if (op == '/') {
+                res = a / b;
+            }
+            return res;
+        };
+      
+        function mathSymb(num) {
+            let res;
+
+            if (num == 1){
+                res = '+';
+            }
+            else if(num == 2){
+                res = '-';
+            }
+            else if(num == 3){
+                res = '*';
+            }
+            else if(num == 4/*  && a % b === 0 */){
+                res = '/';
+            }
+            else{
+                res = '';
+            }
+            return res;
+        }
+
+        let a, b, symbol, res, op, answer;
+        let score = 0;
+
+        for (let i = 0; i < 10; i++) {
+            a = randomInt(1,10);
+            b = randomInt(1,10);
+            symbol = randomInt(1,4);
+            op = mathSymb(symbol);
+            res = mathOP(a, b, op);
+
+            answer = +prompt(a + ' ' + op + ' ' + b + ' = ?')
+            
+            if (+res.toFixed(2) == +answer.toFixed(2)) {
+                score++;                
+            };
+ 
+            if (i == 9) {
+                alert('Ваша оценка ' + score + ' балов')
+            } 
+        }
+    </script>
+
+</body>
+</html>
